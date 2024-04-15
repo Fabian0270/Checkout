@@ -7,7 +7,8 @@ const Header = () => {
 
     return (
         <div className="header">
-            <h1>Some<span>App</span></h1>
+            <h1>The Dog Park</h1>
+            <h2>Bästa Gymmet I Skåne</h2>
             <div className="cart">
                 <BsCart2 />
                 <p>{cart.length}</p>
