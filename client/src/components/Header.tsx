@@ -1,3 +1,7 @@
+import { Route, Routes } from "react-router-dom"
+import Payment from "./Payment"
+import Confirmation from "./Confirmation"
+
 import { useCart } from "../context/CartContext";
 import "./Header.css"
 import { BsCart2 } from "react-icons/bs";
@@ -12,6 +16,10 @@ const Header = () => {
             <div className="cart">
                 <BsCart2 />
                 <p>{cart.length}</p>
+                <Routes>
+                    <Route path="/" element={<Payment />} />
+                    <Route path="/confirmation" element={<Confirmation />} />
+                </Routes>
             </div>
         </div>
     )
