@@ -1,20 +1,29 @@
-const express = require("express")
-const cors = require("cors")
-const stripe = require("stripe")("sk_test_51P5cByGJMzMYUy5TK7ZHSDbqsnRrA4d2hLHYUED3YDumMc7eDo6tBVILKONhfSLznMmokHNV72bGRbPxrr6KIGfD00P5I7i61Q")
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const cookieSession = require("cookie-session");
 
+const authRouter = require("./routers/auth.router")
+const usersRouter = require("./routers/users.router")
 const stripeRouter = require("./routers/stripe.router")
+const { getProducts } = require("./controllers/stripe.controller");
 
-const app = express()
 
-app.use(cors())
+const app = express();
 
-app.get("/products", async (req, res) => {
-    const products = await stripe.products.list({
-        expand: ["data.default_price"]
-    });
-    res.status(200).json(products)
-})
+app.use(
+  cors({origin: "http://localhost:5173", credentials: true}));
 
-app.use("/payments", stripeRouter)
+app.use(express.json())
 
-app.listen(3000, () => console.log("Server is up...."))
+app.use(cookieSession({
+    secret: "DontTellAnyone",
+    maxAge: 1000 * 60 * 60 * 24,
+  }));
+
+app.use("/auth", authRouter)
+app.use("/users", usersRouter)
+app.use("/payments", stripeRouter);
+app.get("/products", getProducts);
+
+app.listen(3000, () => console.log("Server  is running on port 3000"));

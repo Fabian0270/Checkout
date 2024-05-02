@@ -1,28 +1,34 @@
-import { Route, Routes } from "react-router-dom"
-import Payment from "./Payment"
-import Confirmation from "./Confirmation"
-
+import { useEffect } from "react";
 import { useCart } from "../context/CartContext";
-import "./Header.css"
-import { BsCart2 } from "react-icons/bs";
+import Logout from "./Logout";
 
-const Header = () => {
-    const { cart } = useCart()
+const Header = ({
+  setIsModalOpen,
+}: {
+  setIsModalOpen: (isOpen: boolean) => void;
+}) => {
+  const { cart, setUser } = useCart();
+  const quantityProducts = cart.reduce((total, item) => total + item.quantity, 0);
 
-    return (
-        <div className="header">
-            <h1>The Dog Park</h1>
-            <h2>Bästa Gymmet I Skåne</h2>
-            <div className="cart">
-                <BsCart2 />
-                <p>{cart.length}</p>
-                <Routes>
-                    <Route path="/" element={<Payment />} />
-                    <Route path="/confirmation" element={<Confirmation />} />
-                </Routes>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      setUser({ email: userEmail });
+    }
+  }, [setUser]);
 
-export default Header
+  return (
+    <div className="flex items-center ml-10 pt-4">
+      <Logout />
+
+
+<div>
+      <button className="ml-20 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out mt-4" onClick={() => setIsModalOpen(true)}> Cart - {quantityProducts}
+      </button>
+      </div>
+
+    </div>
+  );
+};
+
+export default Header;
