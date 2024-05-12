@@ -26,13 +26,20 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4rem;
   line-height: 1.1;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  margin-left: 0.5rem;
 }
 
 button {
@@ -54,6 +61,60 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+img {
+  border-radius: 0.8rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout-btn {
+  height: 42.4px;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 0.5rem;
+} 
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid #acacac;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  min-width: 136px;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.product {
+  border: 2px solid #acacac;
+  border-radius: 1rem;
+  box-shadow: 2px #acacac;
+  padding: 0.5rem;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -63,6 +124,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #a8a8a8;
   }
 }

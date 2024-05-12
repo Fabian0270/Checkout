@@ -41,7 +41,7 @@ return (
       {user ? (
         `INLOGGAD ${user}` 
       ) : (
-        <img alt="Logo"  /> 
+        <h1>The Dog Park</h1> 
       )}
     </h1>
     {!user && (
@@ -49,20 +49,20 @@ return (
         {isRegistering ? (
           <>
             <Registration />
-            <span 
+            <a href="#"
               onClick={() => setIsRegistering(false)}>
               Back to Login
-            </span>
+            </a>
           </>
         ) : (
           <div>
             <Login />
             <p>
-              New User? Proceeed to registration{" "}
-              <span
+              New User? Proceed to registration {" "}
+              <a href="#"
                 onClick={() => setIsRegistering(true)}>
                 here
-              </span>
+              </a>
               !
             </p>
             </div>

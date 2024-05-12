@@ -39,7 +39,6 @@ export const Login = () => {
       localStorage.setItem("userEmail", email);
 
       setUser({ email });
-      // console.log("user logged in: " + email);
       navigate("/store");
     } catch (error) {
       console.error("Login error:", error);
@@ -47,32 +46,29 @@ export const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center">
-    <form onSubmit={handleSubmit} className="w-screen flex flex-col items-center px-4">
-      <div className=" w-full max-w-md ">
+    <div className="form-container" >
+    <form onSubmit={handleSubmit}>
+      <div>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="Email"
-          className="w-4/5 p-2.5 mt-1 rounded border border-gray-300 bg-[#dce8e1] focus:outline-none"
-          
         />
       </div>
-      <div className=" w-full max-w-md ">
+      <div>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           placeholder="Password"
-          className="w-4/5 p-2.5 mt-1 rounded border border-gray-300 bg-[#dce8e1] focus:outline-none"
         />
       </div>
       {error && <div>{error}</div>}
-      <div className=" w-full max-w-md flex justify-center mr-20" >
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out mt-4 ">Login</button>
+      <div>
+      <button type="submit">Login</button>
       </div>
     </form>
     </div>

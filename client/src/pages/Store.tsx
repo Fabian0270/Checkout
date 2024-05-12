@@ -39,26 +39,21 @@ return (
     <Header setIsModalOpen={setIsModalOpen} />
     <CartModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-
-    <div className="flex justify-center mt-6">
-      <img src={logo} alt="Logo" className="w-1/3" />
-    </div>
-
-
-    <div className="mt-10 px-4 max-w-7xl mx-auto pb-60">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div>
+      <div className="products-container" >
         {products.map((product: { id: string; images: string[]; name: string; price: number }) => (
-          <div key={product.id} className=" rounded-lg p-4 flex flex-col items-center">
+          <div className="product" key={product.id}>
             {product.images && (
               <img
                 src={product.images[0]}
                 alt={product.name}
-                className="h-80 w-full rounded-lg"
+                width={200}
+                height={200}
               />
             )}
-            <h2 className="mt-2 font-bold text-black ">{product.name}</h2>
+            <h2>{product.name}</h2>
             <h3>{product.price}:-</h3>
-            <button onClick={() => addToCart(product)} className="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={() => addToCart(product)}>
               Add to Cart
             </button>
           </div>

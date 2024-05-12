@@ -18,13 +18,13 @@ const Header = ({
   }, [setUser]);
 
   return (
-    <div className="flex items-center ml-10 pt-4">
+    <div className="header" >
       <Logout />
 
 
 <div>
-      <button className="ml-20 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out mt-4" onClick={() => setIsModalOpen(true)}> Cart - {quantityProducts}
-      </button>
+      <p className="cart" > Cart - {quantityProducts}
+      </p>
       </div>
 
     </div>

@@ -26,7 +26,6 @@ const CartModal = ({
 
   const handlePayment = async () => {
     const cartForStripe = cart.map((item) => ({
-      image: item.product.images[0],
       name: item.product.name,
       product: item.product.id,
       quantity: item.quantity,
@@ -60,18 +59,15 @@ const CartModal = ({
 
 
 return (
-  <div className={isOpen ? "fixed top-0 right-0  w-96 h-screen bg-emerald-100  p-5 shadow-lg overflow-y-auto z-50" : "hidden"}>
-    <div>
+  <div className={isOpen ? "cart-container" : "cart-container"}>
+    <div className="cart" >
     <ul>
       {cart.map((item) => (
         <li key={item.product.id}>
-          <img
-            src={item.product.images[0]}
-            alt={item.product.name}
-          />
           <span>{item.product.name} - Amount: {item.quantity}</span>
           <button
             onClick={() => removeFromCart(item.product.id)}>
+              Remove
           </button>
         </li>
       ))}
@@ -83,9 +79,6 @@ return (
         Checkout
       </button>
     </div>
-    <button onClick={onClose}>
-      Close
-    </button>
     </div>
   </div>
 );

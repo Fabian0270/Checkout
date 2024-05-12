@@ -38,17 +38,16 @@ export const Registration = () => {
   return (
     
 
-  <div className="flex flex-col items-center p-4">
-    <h2 className="text-2xl font-bold mb-4">Register</h2>
-    {errorMessage && <p className="text-red-500 font-bold">{errorMessage}</p>}
-    {successMessage && <p className="text- font-bold">{successMessage}</p>}
+  <div>
+    <h2>Register</h2>
+    {errorMessage && <p>{errorMessage}</p>}
+    {successMessage && <p>{successMessage}</p>}
 
     <input
       type="email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       placeholder="Email"
-      className="w-4/5 p-2.5 mt-1 rounded border border-gray-300 bg-[#dce8e1] focus:outline-none"
     />
     
     <input
@@ -56,10 +55,9 @@ export const Registration = () => {
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       placeholder="Password"
-      className="w-4/5 p-2.5 mt-1 rounded border border-gray-300 bg-[#dce8e1] focus:outline-none"
     />
 
-    <button onClick={handleRegister} className="ml-20 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ease-in-out mt-4 mr-20">
+    <button onClick={handleRegister}>
       Register
     </button>
   </div>
